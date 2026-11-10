@@ -1,0 +1,376 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Martins Tomuter</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow reading column; hero states the stack, an infra map is the signature exhibit, then projects, timeline, skills, contact */
+:root{
+  --bg:#f5f8fc; --surface:#eaf0f8; --fg:#0b1324; --muted:#4f5d75; --line:#d6dfec; --grid:rgba(11,102,228,.07);
+  --gold:#0b66e4; --gold-soft:#dde9fb; --on-gold:#ffffff;
+  --panel:#0b1324; --on-panel:#e6edf7; --panel-muted:#93a3bf; --panel-line:#22314d; --panel-accent:#3fd0ff;
+  --display:"Archivo",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#070b14; --surface:#0e1524; --fg:#e6edf7; --muted:#8a99b3; --line:#1c2840; --grid:rgba(63,208,255,.06);
+  --gold:#3fd0ff; --gold-soft:#0d2a3d; --on-gold:#04121c;
+  --panel:#0e1524; --panel-line:#22314d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#070b14; --surface:#0e1524; --fg:#e6edf7; --muted:#8a99b3; --line:#1c2840; --grid:rgba(63,208,255,.06);
+  --gold:#3fd0ff; --gold-soft:#0d2a3d; --on-gold:#04121c;
+  --panel:#0e1524; --panel-line:#22314d; color-scheme:dark}
+.hero{position:relative;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px;-webkit-mask-image:radial-gradient(ellipse at 25% 35%,#000 20%,transparent 72%);mask-image:radial-gradient(ellipse at 25% 35%,#000 20%,transparent 72%)}
+
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body)}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--gold)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.label{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+section{padding-block:56px;border-top:1px solid var(--line)}
+section h2{font-size:clamp(24px,4vw,32px);font-weight:800;margin-top:10px}
+.lead{color:var(--muted);max-width:62ch;margin:12px 0 0}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;flex-wrap:wrap}
+.mark{font:800 18px/1 var(--display);letter-spacing:-.01em}
+.mark span{color:var(--gold)}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--fg)}
+
+/* hero */
+.hero{padding-block:48px 64px}
+.hero h1{font-size:clamp(40px,8vw,76px);font-weight:800;letter-spacing:-.025em;margin-top:18px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:clamp(17px,2.2vw,20px);max-width:58ch;color:var(--muted);margin:22px 0 0}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{font:600 15px/1 var(--body);padding:14px 20px;border-radius:6px;text-decoration:none;border:1px solid var(--fg);color:var(--fg);background:transparent;cursor:pointer}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.btn:hover{transform:translateY(-1px)}
+.stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px;padding:0;list-style:none}
+.stack li{font:500 13px/1 var(--mono);padding:8px 10px;border:1px solid var(--line);border-radius:4px;color:var(--muted)}
+
+/* lanes */
+.lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
+.lanes h3{font-size:19px;font-weight:700;margin-top:10px}
+.lanes p{color:var(--muted);margin:8px 0 0;font-size:15px}
+.lanes .label{color:var(--muted)}
+
+/* infra map */
+.map{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;overflow-x:auto}
+.map svg{display:block;min-width:640px;width:100%;height:auto}
+.map text{font-family:var(--mono)}
+.caption{font-size:14px;color:var(--muted);margin:14px 0 0;max-width:70ch}
+
+/* projects */
+.projects{display:grid;gap:0;margin-top:28px}
+.proj{display:grid;grid-template-columns:200px 1fr;gap:28px;padding-block:28px;border-top:1px solid var(--line)}
+.proj:first-child{border-top:0;padding-top:4px}
+.proj h3{font-size:22px;font-weight:800}
+.proj .kind{color:var(--muted);font-size:14px;margin-top:6px}
+.proj .body{min-width:0}
+.proj ul{margin:0;padding-left:18px}
+.proj li{margin-bottom:8px}
+.proj li::marker{color:var(--gold)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;padding:0;list-style:none}
+.tags li{margin:0;font:500 12px/1 var(--mono);background:var(--gold-soft);color:var(--fg);padding:6px 8px;border-radius:3px}
+.tags li::marker{content:""}
+.live{display:inline-block;margin-top:12px;font:500 13px/1 var(--mono)}
+
+/* timeline */
+.timeline{list-style:none;padding:0;margin:28px 0 0;position:relative}
+.timeline li{display:grid;grid-template-columns:150px 1fr;gap:24px;padding-block:16px;border-top:1px solid var(--line)}
+.timeline li:first-child{border-top:0}
+.when{font:500 13px/1.5 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.timeline h3{font-size:17px;font-weight:700}
+.timeline .org{color:var(--gold);font-weight:600}
+.timeline p{margin:6px 0 0;color:var(--muted);font-size:15px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;margin-top:28px}
+.skills h3{font:600 14px/1.3 var(--body);color:var(--fg)}
+.skills p{margin:6px 0 0;color:var(--muted);font-size:15px}
+
+/* contact */
+.contact{background:var(--panel);color:var(--on-panel);border-top:1px solid var(--panel-line)}
+.contact .label{color:var(--panel-accent)}
+.contact h2{color:var(--on-panel)}
+.contact .lead{color:var(--panel-muted)}
+.contact .row{border-color:var(--panel-line)}
+.contact .row .k{color:var(--panel-accent)}
+.contact .copy{background:var(--panel-accent);color:#04121c}
+.rows{display:grid;gap:12px;margin-top:28px;max-width:560px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--bg) 22%,transparent);border-radius:8px;flex-wrap:wrap}
+.row .k{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.row .v{font:500 16px/1.3 var(--body);user-select:all;word-break:break-all;min-width:0}
+.copy{font:600 13px/1 var(--body);background:var(--gold);color:var(--on-gold);border:0;border-radius:5px;padding:9px 12px;cursor:pointer}
+footer{padding-block:24px;color:var(--muted);font-size:13px}
+
+/* mobile flow version of the infra map */
+.flow-m{display:none}
+.flow-m .step{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.flow-m .step.hub{background:var(--gold-soft);border-color:var(--gold)}
+.flow-m .step b{display:block;font:600 15px/1.3 var(--body)}
+.flow-m .step span{display:block;font:400 12px/1.5 var(--mono);color:var(--muted);word-break:break-word}
+.flow-m .down{text-align:center;color:var(--muted);font:500 14px/1 var(--mono);padding-block:6px}
+.flow-m .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.flow-m .dbs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.flow-m .dbs i{font:500 11px/1 var(--mono);font-style:normal;border:1px solid var(--gold);border-radius:4px;padding:5px 7px}
+
+@media (max-width:720px){
+  section{padding-block:44px}
+  .lanes,.skills{grid-template-columns:1fr;gap:22px}
+  .proj,.timeline li{grid-template-columns:1fr;gap:8px}
+  .proj{padding-block:24px}
+  .timeline li{padding-block:18px}
+  .map svg{display:none}
+  .map{padding:14px;overflow:visible}
+  .flow-m{display:block}
+}
+@media (max-width:520px){
+  body{font-size:15px}
+  nav{padding-block:14px}
+  nav ul{gap:0;width:100%;justify-content:space-between}
+  nav a{display:inline-block;padding:8px 2px;font-size:13px}
+  .hero{padding-block:28px 44px}
+  .hero h1{font-size:clamp(34px,10vw,44px);margin-top:14px}
+  .hero p{font-size:16px;margin-top:16px}
+  .cta{flex-direction:column}
+  .btn{text-align:center;padding:15px 18px}
+  .stack{margin-top:26px}
+  .stack li{font-size:12px;padding:7px 9px}
+  .proj h3{font-size:20px}
+  .flow-m .pair{grid-template-columns:1fr}
+  .row{flex-direction:column;align-items:stretch}
+  .copy{width:100%;padding:12px}
+}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s ease}}
+</style>
+
+<div class="wrap">
+  <nav aria-label="Main">
+    <div class="mark">Martins<span>.</span></div>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#infra">Infrastructure</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="label">Software Engineer · Full-Stack &amp; DevOps · Abuja</div>
+    <h1>I build web apps, then I <em>run them in production.</em></h1>
+    <p>I'm Igbabee Martins Tomuter. I write Laravel and Next.js applications and operate them on Linux servers I configure myself, with Nginx, MySQL, TLS and isolated data for every client.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+    <ul class="stack" aria-label="Core stack">
+      <li>Laravel 11</li><li>PHP 8.4</li><li>Next.js 14</li><li>React</li><li>MySQL</li><li>Nginx</li><li>PHP-FPM</li><li>PM2</li><li>Let's Encrypt</li><li>Linux</li>
+    </ul>
+  </header>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="label">What I do</div>
+    <h2>Three jobs, one engineer</h2>
+    <div class="lanes">
+      <div>
+        <div class="label">Build</div>
+        <h3>Full-stack applications</h3>
+        <p>Laravel APIs and Next.js frontends for schools, exams and B2B sales teams, designed for many clients from a single codebase.</p>
+      </div>
+      <div>
+        <div class="label">Operate</div>
+        <h3>Linux infrastructure</h3>
+        <p>VPS setup, Nginx server blocks, PHP-FPM and PM2 processes, DNS, subdomains and wildcard SSL. I deploy and maintain what I ship.</p>
+      </div>
+      <div>
+        <div class="label">Protect</div>
+        <h3>Security and data integrity</h3>
+        <p>Per-tenant database isolation, hashed passwords, TLS everywhere and migrations that rerun safely without touching live data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="infra">
+  <div class="wrap">
+    <div class="label">Infrastructure</div>
+    <h2>How my production server is wired</h2>
+    <p class="lead">Two applications, many schools, one VPS. This is the setup I built and run for FlexiEduApp and FlexiCBT.</p>
+    <div class="map" role="img" aria-label="Diagram: requests to school subdomains and the exam subdomain pass through Nginx with wildcard TLS, then route to FlexiEduApp on PHP-FPM or FlexiCBT on PM2 and PHP-FPM, which use separate MySQL databases per school.">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker>
+        </defs>
+        <!-- clients -->
+        <g font-size="12" fill="var(--fg)">
+          <rect x="10" y="40" width="160" height="34" rx="5" fill="var(--bg)" stroke="var(--line)"/>
+          <text x="22" y="62">school-a.flexisoftware.ng</text>
+          <rect x="10" y="86" width="160" height="34" rx="5" fill="var(--bg)" stroke="var(--line)"/>
+          <text x="22" y="108">school-b.flexisoftware.ng</text>
+          <rect x="10" y="190" width="160" height="34" rx="5" fill="var(--bg)" stroke="var(--line)"/>
+          <text x="22" y="212">flexicbt.flexisoftware.ng</text>
+        </g>
+        <!-- nginx -->
+        <rect x="230" y="40" width="150" height="184" rx="8" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text x="305" y="118" text-anchor="middle" font-size="16" font-weight="500" fill="var(--fg)">Nginx</text>
+        <text x="305" y="140" text-anchor="middle" font-size="11" fill="var(--muted)">TLS *.flexisoftware.ng</text>
+        <text x="305" y="156" text-anchor="middle" font-size="11" fill="var(--muted)">server blocks</text>
+        <!-- apps -->
+        <rect x="440" y="52" width="150" height="56" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+        <text x="515" y="76" text-anchor="middle" font-size="13" font-weight="500" fill="var(--fg)">FlexiEduApp</text>
+        <text x="515" y="94" text-anchor="middle" font-size="11" fill="var(--muted)">Laravel · PHP-FPM</text>
+        <rect x="440" y="168" width="150" height="66" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+        <text x="515" y="192" text-anchor="middle" font-size="13" font-weight="500" fill="var(--fg)">FlexiCBT</text>
+        <text x="515" y="209" text-anchor="middle" font-size="11" fill="var(--muted)">Next.js · PM2</text>
+        <text x="515" y="224" text-anchor="middle" font-size="11" fill="var(--muted)">Laravel · PHP 8.4-FPM</text>
+        <!-- dbs -->
+        <g font-size="11" fill="var(--fg)">
+          <rect x="640" y="30" width="110" height="28" rx="5" fill="var(--bg)" stroke="var(--gold)"/>
+          <text x="695" y="48" text-anchor="middle">db: school_a</text>
+          <rect x="640" y="66" width="110" height="28" rx="5" fill="var(--bg)" stroke="var(--gold)"/>
+          <text x="695" y="84" text-anchor="middle">db: school_b</text>
+          <rect x="640" y="102" width="110" height="28" rx="5" fill="var(--bg)" stroke="var(--gold)"/>
+          <text x="695" y="120" text-anchor="middle">db: school_n</text>
+          <rect x="640" y="186" width="110" height="28" rx="5" fill="var(--bg)" stroke="var(--line)"/>
+          <text x="695" y="204" text-anchor="middle">db: cbt</text>
+        </g>
+        <text x="695" y="150" text-anchor="middle" font-size="10" fill="var(--gold)">one MySQL db per school</text>
+        <!-- arrows -->
+        <g stroke="var(--muted)" stroke-width="1.3" fill="none" marker-end="url(#ar)">
+          <path d="M170 57H228"/><path d="M170 103H228"/><path d="M170 207H228"/>
+          <path d="M380 80H438"/><path d="M380 201H438"/>
+          <path d="M590 70L638 44"/><path d="M590 80L638 80"/><path d="M590 90L638 116"/>
+          <path d="M590 200H638"/>
+        </g>
+        <text x="20" y="270" font-size="11" fill="var(--muted)">Each school gets its own subdomain and database. New schools get HTTPS automatically from the wildcard certificate.</text>
+      </svg>
+      <div class="flow-m" aria-hidden="true">
+        <div class="step"><b>Visitors</b><span>school-a.flexisoftware.ng · school-b.flexisoftware.ng · flexicbt.flexisoftware.ng</span></div>
+        <div class="down">↓</div>
+        <div class="step hub"><b>Nginx</b><span>Wildcard TLS for *.flexisoftware.ng · server blocks route each subdomain</span></div>
+        <div class="down">↓</div>
+        <div class="pair">
+          <div class="step"><b>FlexiEduApp</b><span>Laravel · PHP-FPM</span><div class="dbs"><i>db: school_a</i><i>db: school_b</i><i>db: school_n</i></div></div>
+          <div class="step"><b>FlexiCBT</b><span>Next.js · PM2 · Laravel · PHP 8.4-FPM</span><div class="dbs"><i>db: cbt</i></div></div>
+        </div>
+        <p class="caption">Each school gets its own subdomain and its own MySQL database. New schools get HTTPS automatically from the wildcard certificate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="label">Selected work</div>
+    <h2>Projects I've built and shipped</h2>
+    <div class="projects">
+      <article class="proj">
+        <div><h3>FlexiEduApp</h3><div class="kind">School management platform</div></div>
+        <div class="body">
+          <ul>
+            <li>Multi-tenant Laravel platform where a custom service provider routes each school to its own MySQL database, so one school's records never mix with another's.</li>
+            <li>Deployed and operated on a Linux VPS, serving several live schools from one codebase.</li>
+            <li>Wildcard TLS with Let's Encrypt, and idempotent migrations so releases rerun safely on production data.</li>
+          </ul>
+          <ul class="tags"><li>Laravel</li><li>MySQL</li><li>Nginx</li><li>Multi-tenancy</li></ul>
+          <a class="live" href="https://flexisoftware.ng" target="_blank" rel="noopener">flexisoftware.ng ↗</a>
+        </div>
+      </article>
+      <article class="proj">
+        <div><h3>FlexiCBT</h3><div class="kind">Computer-based exam system</div></div>
+        <div class="body">
+          <ul>
+            <li>Laravel API on PHP 8.4-FPM with a Next.js frontend kept running by PM2.</li>
+            <li>Runs beside FlexiEduApp on the same server, with Nginx routing traffic to each app to keep hosting to a single VPS.</li>
+          </ul>
+          <ul class="tags"><li>Next.js</li><li>Laravel</li><li>PM2</li><li>PHP-FPM</li></ul>
+        </div>
+      </article>
+      <article class="proj">
+        <div><h3>Flexi CRM</h3><div class="kind">B2B SaaS for Nigerian businesses</div></div>
+        <div class="body">
+          <ul>
+            <li>CRM product scoped as 77 feature specifications across 8 delivery phases, with written UI and testing standards.</li>
+            <li>Built on Next.js 14 and Laravel 11. In active development.</li>
+          </ul>
+          <ul class="tags"><li>Next.js 14</li><li>Laravel 11</li><li>Product planning</li></ul>
+        </div>
+      </article>
+      <article class="proj">
+        <div><h3>GWPL Marine</h3><div class="kind">Company website and CMS</div></div>
+        <div class="body">
+          <ul>
+            <li>Full PHP and MySQL website with an admin CMS, email delivery through PHPMailer and spam protection with reCAPTCHA v2.</li>
+            <li>Deployed to Namecheap shared hosting.</li>
+          </ul>
+          <ul class="tags"><li>PHP</li><li>MySQL</li><li>PHPMailer</li><li>reCAPTCHA</li></ul>
+          <a class="live" href="https://gwplmarine.com" target="_blank" rel="noopener">gwplmarine.com ↗</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="label">Experience</div>
+    <h2>Where I've worked</h2>
+    <ol class="timeline">
+      <li><div class="when">Jan 2026 – now</div><div><h3>Technology Associate II · <span class="org">Good Worths Partners Limited</span></h3><p>Develop, deploy and maintain FlexiEduApp, FlexiCBT and Flexi CRM. Manage the production servers, SSL and DNS. Delivered a cybersecurity awareness session for staff and prepared ERP proposals for AEDC and IBEDC.</p></div></li>
+      <li><div class="when">Feb 2025 – Dec 2025</div><div><h3>Multimedia Creative · <span class="org">Ocean Wealth Homes</span></h3><p>IT support and device maintenance, plus marketing visuals, video and ad campaigns.</p></div></li>
+      <li><div class="when">Feb 2021 – Dec 2024</div><div><h3>Web &amp; Multimedia (Freelance) · <span class="org">Sughnen Health Logistics</span></h3><p>Built, hosted and maintained the company website. Designed brand visuals.</p></div></li>
+      <li><div class="when">Mar 2023 – Oct 2023</div><div><h3>Intern · <span class="org">Good Worths Partners Limited</span></h3><p>System setup, troubleshooting and web development.</p></div></li>
+      <li><div class="when">Jul 2022 – Sep 2022</div><div><h3>Mobile Development Intern · <span class="org">Keembest</span></h3><p>Flutter and React Native apps, API integration and Git team workflows.</p></div></li>
+      <li><div class="when">Jul 2021 – Oct 2021</div><div><h3>Web Development Intern · <span class="org">Raadaa.com</span></h3><p>Interfaces in HTML, CSS, JavaScript and React.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">Skills</div>
+    <h2>Toolkit</h2>
+    <div class="skills">
+      <div><h3>DevOps &amp; infrastructure</h3><p>Linux VPS administration, Nginx, PHP-FPM, PM2, SSH, DNS and subdomains, Let's Encrypt, MySQL administration, Git</p></div>
+      <div><h3>Security &amp; data integrity</h3><p>TLS management, bcrypt password hashing, tenant data isolation, reCAPTCHA, safe migrations</p></div>
+      <div><h3>Backend</h3><p>PHP 8, Laravel 11, REST APIs, SQL and MySQL design, multi-tenant architecture</p></div>
+      <div><h3>Frontend</h3><p>JavaScript, React, Next.js 14, HTML, CSS</p></div>
+      <div><h3>Also</h3><p>Flutter and React Native, graphic design, video editing, digital marketing and SEO</p></div>
+      <div><h3>Education</h3><p>B.Eng Computer Engineering, Afe Babalola University, 2024</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2>Hiring for a developer or DevOps role?</h2>
+    <p class="lead">I'm based in Abuja and open to full-time roles, on-site or remote.</p>
+    <div class="rows">
+      <div class="row"><div><div class="k">Email</div><div class="v" id="email">igbabeemartinsjerome@gmail.com</div></div><button class="copy" type="button" data-copy="email">Copy</button></div>
+      <div class="row"><div><div class="k">Phone</div><div class="v" id="phone">+234 706 064 5358</div></div><button class="copy" type="button" data-copy="phone">Copy</button></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><footer>© 2026 Igbabee Martins Tomuter · Abuja, Nigeria</footer></div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.copy), t=el.textContent.trim();
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1600)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  });
+});
+</script>
+
+</body></html>
